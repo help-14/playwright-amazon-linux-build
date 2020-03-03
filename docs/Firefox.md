@@ -1,11 +1,13 @@
 # Build Firefox on Amazon Linux 2
 
 ### Install rust
+
 ```
 amazon-linux-extras install -y rust1
 ```
 
 ### Install nasm 2.13
+
 ```
 cd /opt
 wget http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.xz
@@ -15,6 +17,7 @@ cd nasm-2.13.01
 ```
 
 ### Install autoconf 2.13
+
 ```
 cd ~/
 wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz
@@ -26,12 +29,14 @@ ln -s /usr/local/bin/autoconf /usr/local/bin/autoconf-2.13
 ```
 
 ### Install dependency
+
 ```
 yum install clang pulseaudio-libs-devel gtk3-devel pygobject2 glib2 dbus-glib-devel gtk2-devel pango-devel libdrm-devel libxkbcommon-devel yasm libXt-devel -y
 cargo install cbindgen
 ```
 
 ### Install clang, llvm
+
 ```
 amazon-linux-extras install -y epel
 yum install -y bison cmake3 flex git iperf libstdc++-static python-netaddr gcc gcc-c++ zlib-devel elfutils-libelf-devel
@@ -42,6 +47,7 @@ yum install -y clang clang-devel llvm llvm-devel llvm-static ncurses-devel
 ```
 
 ### Install nodejs 
+
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 source ~/.bashrc
@@ -49,6 +55,7 @@ nvm install 12.16.1
 ```
 
 ### Follow Playwright guide to build browser
+
 - Clone Playwright repo
 - Go to repo folder
 - Run these command:
@@ -58,3 +65,11 @@ cd ./browser_patches/firefox
 ./build.sh
 ```
 Guide in [here](https://github.com/microsoft/playwright/tree/master/browser_patches)
+
+### Archive build
+
+```
+mkdir -p /usr/lib/x86_64-linux-gnu/
+cp /usr/lib64/libstdc++.so.6.0.24 /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+./archive.sh /root/playwright/browser_patches/firefox/archive-firefox.zip
+```
