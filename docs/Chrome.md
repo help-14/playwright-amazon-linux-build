@@ -1,18 +1,14 @@
 # Build Chrome on Amazon Linux 2
 
+### Prepair
 
-### Install dependency
-```
+- Download [build-chrome.sh](https://github.com/help-14/playwright-amazon-linux-build/blob/master/scripts/build-chrome.sh) and [.gclient](https://github.com/help-14/playwright-amazon-linux-build/blob/master/scripts/.gclient).
+- Switch to `root` user and copy file `build.sh` to `home` of root.
+- Make folder `build/chromium`. Copy file `.gclient` to `build/chromium`.
+- Run command: `export VERSION=72.0.3585.0`.
 
-```
+### Build Chrome
 
-### Follow Playwright guide to build browser
-- Clone Playwright repo
-- Go to repo folder
-- Run these command:
-```
-./browser_patches/prepare_checkout.sh chrome
-cd ./browser_patches/chrome
-./build.sh
-```
-Guide in [here](https://github.com/microsoft/playwright/tree/master/browser_patches)
+- Run file `build.sh` with command: `sh build.sh`.
+- Wait script running..., it may take longer.
+- Chrome headless build file storage in: `/root/bin` (aka /root/bin/headless-chromium).
