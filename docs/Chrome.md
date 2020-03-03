@@ -7,7 +7,8 @@ Pick an Instance Type with at least 16 GB of memory. Compile time will take abou
 - Download [build-chrome.sh](https://github.com/help-14/playwright-amazon-linux-build/blob/master/scripts/build-chrome.sh) and [.gclient](https://github.com/help-14/playwright-amazon-linux-build/blob/master/scripts/.gclient).
 - Switch to `root` user and copy file `build.sh` to `home` of root.
 - Make folder `build/chromium`. Copy file `.gclient` to `build/chromium`.
-- Run command: `export VERSION=72.0.3585.0`.
+- Find chromium version on [Playwright](https://github.com/microsoft/playwright), example: 82.0.4057.0
+- Run command: `export VERSION=82.0.4057.0`.
 
 ### Build Chrome
 
