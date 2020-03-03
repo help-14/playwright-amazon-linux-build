@@ -1,12 +1,5 @@
 # Build Firefox on Amazon Linux 2
 
-- Creat a powerful VM on AWS, build will need lots of disk space and build time.
-- SSH to VM then go to root: 
-```
-sudo su -
-yum update
-```
-
 ### Install rust
 ```
 amazon-linux-extras install -y rust1
