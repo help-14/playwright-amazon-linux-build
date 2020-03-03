@@ -1,5 +1,12 @@
 # Build Firefox on Amazon Linux 2
 
+- Creat a powerful VM on AWS, build will need lots of disk space and build time.
+- SSH to VM then go to root: 
+```
+sudo su -
+yum update
+```
+
 ### Install rust
 ```
 amazon-linux-extras install -y rust1
@@ -35,7 +42,7 @@ cargo install cbindgen
 ```
 amazon-linux-extras install -y epel
 yum install -y bison cmake3 flex git iperf libstdc++-static python-netaddr gcc gcc-c++ zlib-devel elfutils-libelf-devel
-sudo yum install -y luajit luajit-devel
+yum install -y luajit luajit-devel
 yum install -y http://repo.iovisor.org/yum/extra/mageia/cauldron/x86_64/netperf-2.7.0-1.mga6.x86_64.rpm
 yum install -y python2-pyroute2
 yum install -y clang clang-devel llvm llvm-devel llvm-static ncurses-devel
