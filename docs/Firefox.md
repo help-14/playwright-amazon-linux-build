@@ -49,8 +49,12 @@ nvm install 12.16.1
 ```
 
 ### Follow Playwright guide to build browser
+- Clone Playwright repo
+- Go to repo folder
+- Run these command:
 ```
 ./browser_patches/prepare_checkout.sh firefox
 cd ./browser_patches/firefox
 ./build.sh
 ```
+Guide in [here](https://github.com/microsoft/playwright/tree/master/browser_patches)
