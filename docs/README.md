@@ -1,4 +1,4 @@
-# Build Firefox on Amazon Linux 2
+# Build browser on Amazon Linux 2
 
 ### Create VM to build
 - Creat a powerful VM on AWS, build will need lots of disk space and time.
