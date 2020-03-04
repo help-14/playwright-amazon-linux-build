@@ -96,12 +96,17 @@ mkdir -p out/Headless && \
 # build chromium headless shell
 ninja -C out/Headless headless_shell
 
-cp out/Headless/headless_shell "$BUILD_BASE/bin/headless-chromium-unstripped"
+cp out/Headless/headless_shell "$BUILD_BASE/headless-chromium-unstripped"
+cp -r out/Headless/swiftshader "$BUILD_BASE/swiftshader"
+cp out/Headless/headless_lib.pak "$BUILD_BASE/headless_lib.pak"
 
 cd "$BUILD_BASE"
 
 # strip symbols
-strip -o "$BUILD_BASE/bin/headless-chromium" build/chromium/src/out/Headless/headless_shell
+strip -o "$BUILD_BASE/headless_shell" "$BUILD_BASE/headless-chromium-unstripped"
+
+# create archive without unstripped file
+zip -r9 chromium.zip headless_shell swiftshader headless_lib.pak
 
 # Use UPX to package headless chromium
 # this adds 1-1.5 seconds of startup time so generally
