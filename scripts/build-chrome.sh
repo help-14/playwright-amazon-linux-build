@@ -82,6 +82,22 @@ SANDBOX_IPC_SOURCE_PATH="content/browser/sandbox_ipc_linux.cc"
 
 sed -e 's/PLOG(WARNING) << "poll";/PLOG(WARNING) << "poll"; failed_polls = 0;/g' -i "$SANDBOX_IPC_SOURCE_PATH"
 
+#
+# SKIP make sure the chosen process is in correct StoragePartition 
+# This patch only for aws lambda
+# Don't use it for any service shared data in chrome,
+# It can make a security bug
+#
+RENDER_PROCESS_HOST_SOURCE_PATH="content/browser/renderer_host/render_process_host_impl.cc"
+
+START_PATCH=$(grep -n "Make sure the chosen process is in the correct" $RENDER_PROCESS_HOST_SOURCE_PATH | awk -F  ":" '{print $1}')
+PATCH_A=$(($START_PATCH + 2))
+PATCH_B=$(($PATCH_A + 1))
+PATCH_C=$(($PATCH_B + 1))
+
+sed -e $PATCH_A's/.*/  \/\/ &/' -i "$RENDER_PROCESS_HOST_SOURCE_PATH"
+sed -e $PATCH_B's/.*/  \/\/ &/' -i "$RENDER_PROCESS_HOST_SOURCE_PATH"
+sed -e $PATCH_C's/.*/  \/\/ &/' -i "$RENDER_PROCESS_HOST_SOURCE_PATH"
 
 # specify build flags
 mkdir -p out/Headless && \
