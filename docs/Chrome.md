@@ -13,5 +13,5 @@ Pick an Instance Type with at least 16 GB of memory. Compile time will take abou
 ### Build Chrome
 
 - Run file `build.sh` with command: `sh build.sh`.
-- Wait script running..., it may take longer.
+- Wait script running..., it may take a long time.
 - Chrome headless build file storage in: `/root` (aka `/root/chromium.zip`).
